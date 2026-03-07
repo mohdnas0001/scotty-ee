@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Facebook,
   Instagram,
@@ -48,12 +49,13 @@ export default function Footer() {
             className="lg:col-span-1"
           >
             <Link href="/" className="inline-block mb-6">
-              <span
-                className="text-2xl font-bold"
-                style={{ fontFamily: "Poppins, sans-serif" }}
-              >
-                Scotty <span className="text-[#f97316]">E & E</span>
-              </span>
+              <Image
+                src="/icon/logo-full-white.svg"
+                alt="Scotty E&E"
+                width={160}
+                height={130}
+                className="h-28 w-auto"
+              />
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Creating unforgettable event experiences with passion, creativity,

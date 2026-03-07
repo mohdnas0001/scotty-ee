@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -43,26 +44,34 @@ export default function Navbar() {
         <div className="w-full flex items-center justify-between  px-4 sm:px-6 lg:px-8">
           <div className="w-full flex items-center justify-between gap-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
+            <Link href="/" className="flex items-center justify-center gap-2">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 className="flex items-center"
               >
-                <span
-                  className={cn(
-                    "text-2xl md:text-3xl font-bold transition-colors duration-300",
-                    isScrolled ? "text-[#1e3a5f]" : "text-white"
-                  )}
-                  style={{ fontFamily: "Poppins, sans-serif" }}
-                >
-                  Scotty{" "}
-                  <span className="text-[#f97316]">E & E</span>
-                </span>
+                {/* Desktop: Line logo */}
+                <Image
+                  src={isScrolled ? "/icon/logo-line-colored-alt.svg" : "/icon/logo-full-white-2.svg"}
+                  alt="Scotty E&E"
+                  width={200}
+                  height={40}
+                  className="hidden sm:block h-10 w-auto transition-all duration-300"
+                  priority
+                />
+                {/* Mobile: Smaller line logo */}
+                <Image
+                  src={isScrolled ? "/icon/logo-line-colored.svg" : "/icon/logo-line-white.svg"}
+                  alt="Scotty E&E"
+                  width={160}
+                  height={32}
+                  className="sm:hidden h-8 w-auto transition-all duration-300"
+                  priority
+                />
               </motion.div>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden lg:flex items-center justify-center gap-8">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -124,9 +133,13 @@ export default function Navbar() {
           >
             <div className="flex flex-col h-full p-8">
               <div className="flex justify-between items-center mb-12">
-                <span className="text-2xl font-bold text-white">
-                  Scotty <span className="text-[#f97316]">E & E</span>
-                </span>
+                <Image
+                  src="/icon/logo-line-white.svg"
+                  alt="Scotty E&E"
+                  width={180}
+                  height={36}
+                  className="h-9 w-auto"
+                />
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-white p-2 hover:bg-white/10 rounded-lg"
