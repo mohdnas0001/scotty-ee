@@ -91,20 +91,18 @@ export default function Navbar() {
               ))}
               
             </div>
-                        <div className="hidden lg:flex items-center gap-8">
-  <Button
-                asChild
-                variant="accent"
-                size="sm"
-                className="ml-4 px-2 py-2"
-              >
-                <Link href="/book">
-                  Book Event
-                </Link>
-              </Button>
-              </div>
-          
-
+            <div className="hidden lg:flex items-center gap-8">
+            <Button
+              asChild
+              variant="accent"
+              size="sm"
+              className="ml-4 px-2 py-2"
+            >
+              <Link href="/book">
+                Book Event
+              </Link>
+            </Button>
+            </div>
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -120,7 +118,6 @@ export default function Navbar() {
           </div>
         </div>
       </motion.nav>
-
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
