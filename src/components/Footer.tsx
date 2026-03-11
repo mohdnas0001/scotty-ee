@@ -21,10 +21,10 @@ const footerLinks = {
     { label: "Contact", href: "/contact" },
   ],
   services: [
-    { label: "Event Planning", href: "/services" },
-    { label: "Corporate Events", href: "/services" },
-    { label: "Wedding Management", href: "/services" },
-    { label: "Conference Management", href: "/services" },
+    { label: "Event Management", href: "/services" },
+    { label: "Corporate Errands", href: "/services" },
+    { label: "Contracting Services", href: "/services" },
+    { label: "Travel & Bookings", href: "/services" },
   ],
   social: [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -58,8 +58,8 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Creating unforgettable event experiences with passion, creativity,
-              and meticulous attention to detail.
+              Providing dependable event planning, corporate errands, and contracting
+              services across Nigeria and Africa.
             </p>
             {/* Social Links */}
             <div className="flex gap-4">
@@ -130,29 +130,39 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-6">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-[#f97316] mt-1 flex-shrink-0" />
+                <MapPin className="w-5 h-5 text-[#f97316] mt-1 shrink-0" />
                 <span className="text-gray-400">
-                  123 Event Street, Suite 100
+                  2nd Floor, Ogun State House,
                   <br />
-                  New York, NY 10001
+                  Central Business District,
+                  <br />
+                  Abuja, Nigeria
                 </span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-[#f97316] flex-shrink-0" />
-                <a
-                  href="tel:+1234567890"
-                  className="text-gray-400 hover:text-[#f97316] transition-colors"
-                >
-                  +1 (234) 567-890
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-[#f97316] mt-0.5 shrink-0" />
+                <div className="flex flex-col gap-1">
+                  <a
+                    href="tel:08135420713"
+                    className="text-gray-400 hover:text-[#f97316] transition-colors"
+                  >
+                    08135420713
+                  </a>
+                  <a
+                    href="tel:08165208228"
+                    className="text-gray-400 hover:text-[#f97316] transition-colors"
+                  >
+                    08165208228
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-[#f97316] flex-shrink-0" />
+                <Mail className="w-5 h-5 text-[#f97316] shrink-0" />
                 <a
-                  href="mailto:info@scottyee.com"
+                  href="mailto:info@scottyeande.com"
                   className="text-gray-400 hover:text-[#f97316] transition-colors"
                 >
-                  info@scottyee.com
+                  info@scottyeande.com
                 </a>
               </li>
             </ul>

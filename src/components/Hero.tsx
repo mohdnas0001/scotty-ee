@@ -58,7 +58,7 @@ export default function Hero() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium">
             <Sparkles className="w-4 h-4 text-[#f97316]" />
-            Premium Event Management Services
+            Scotty E&amp;E Corporate Services
           </span>
         </motion.div>
 
@@ -66,23 +66,31 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
+          className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
           style={{ fontFamily: "Poppins, sans-serif" }}
         >
-          Creating{" "}
-          <span className="text-[#f97316]">Unforgettable</span>
-          <br />
-          Event Experiences
+          We Don&apos;t Just Handle Tasks.{" "}
+          <br/>
+          <span className="text-[#f97316]">We Make Business</span> <br/> Run Smoothly.
         </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 , y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-4"
+        >
+          From high-impact events to corporate errands and operational support, Scotty E&amp;E
+          helps businesses stay organised, efficient, and focused on what truly matters.
+        </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-10"
+          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+          className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto mb-10"
         >
-          From corporate conferences to dream weddings, we bring your vision to life
-          with meticulous planning, creative design, and flawless execution.
+          Across Nigeria and Africa, we deliver reliable planning, coordination, and contracting
+          services designed to simplify operations and deliver results.
         </motion.p>
 
         <motion.div
@@ -92,14 +100,14 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Button asChild variant="accent" size="lg">
-            <Link href="/services">
-              View Services
+            <Link href="/book">
+              NBA-AGC 2026
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>
           </Button>
           <Button asChild variant="outlineLight" size="lg">
-            <Link href="/book">
-              Book Event
+            <Link href="/contact">
+              Speak to Our Team
             </Link>
           </Button>
         </motion.div>

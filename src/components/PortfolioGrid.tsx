@@ -6,38 +6,38 @@ import Image from "next/image";
 const portfolioItems = [
   {
     id: 1,
-    title: "Annual Corporate Gala",
-    category: "Corporate Event",
+    title: "Corporate Conferences",
+    category: "Event Management",
     image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop",
   },
   {
     id: 2,
-    title: "Summer Wedding Celebration",
-    category: "Wedding",
-    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
+    title: "Product Launch Events",
+    category: "Event Management",
+    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=600&fit=crop",
   },
   {
     id: 3,
-    title: "Tech Innovation Summit",
-    category: "Conference",
+    title: "Business Networking Events",
+    category: "Event Management",
     image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&h=600&fit=crop",
   },
   {
     id: 4,
-    title: "Charity Fundraiser Night",
-    category: "Fundraiser",
+    title: "Corporate Logistics Support",
+    category: "Corporate Errands",
     image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop",
   },
   {
     id: 5,
-    title: "Product Launch Event",
-    category: "Corporate Event",
-    image: "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800&h=600&fit=crop",
+    title: "Event Production & Coordination",
+    category: "Event Management",
+    image: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&h=600&fit=crop",
   },
   {
     id: 6,
-    title: "Elegant Garden Wedding",
-    category: "Wedding",
+    title: "Operational Errand Support",
+    category: "Corporate Errands",
     image: "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800&h=600&fit=crop",
   },
 ];
@@ -55,14 +55,15 @@ export default function PortfolioGrid() {
           className="text-center mb-16"
         >
           <span className="text-[#f97316] font-semibold text-sm uppercase tracking-wider">
-            Our Work
+            Portfolio
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-3 mb-5">
-            Featured Events
+            Work That Speaks for Itself
           </h2>
           <p className="text-white/70 max-w-2xl mx-auto text-lg">
-            Explore our portfolio of successful events that showcase our creativity,
-            attention to detail, and commitment to excellence.
+            Over the years, Scotty E&amp;E has supported businesses, organisations, and individuals
+            with professional event coordination and operational services. Our portfolio reflects a
+            commitment to precision, organisation, and exceptional service delivery.
           </p>
         </motion.div>
 

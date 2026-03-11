@@ -3,13 +3,13 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 
 export default function CTASection() {
   return (
-    <section className="relative w-full py-24 overflow-hidden">
+    <section className="relative w-full py-24 overflow-hidden" id="contact">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1e3a5f] via-[#2d4a6f] to-[#1e3a5f] animate-gradient" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#1e3a5f] via-[#2d4a6f] to-[#1e3a5f] animate-gradient" />
       
       {/* Decorative Elements */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-[#f97316]/20 rounded-full blur-3xl" />
@@ -30,30 +30,71 @@ export default function CTASection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium mb-6">
-            <Sparkles className="w-4 h-4 text-[#f97316]" />
-            Ready to Create Something Amazing?
-          </span>
+          <span className="text-[#f97316] font-semibold text-sm uppercase tracking-wider">Contact</span>
           
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Let&apos;s Bring Your{" "}
-            <span className="text-[#f97316]">Vision</span> to Life
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 mt-3 leading-tight">
+            Let&apos;s{" "}
+            <span className="text-[#f97316]">Work Together</span>
           </h2>
           
           <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto mb-10">
-            Whether it&apos;s a corporate event, wedding, or private celebration,
-            our team is ready to create an unforgettable experience for you.
+            Whether you are planning an event, need reliable corporate support, or require project
+            coordination, Scotty E&amp;E is ready to help. Our team is available to discuss your needs
+            and provide tailored solutions.
           </p>
+
+          {/* Contact Details */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+            <div className="flex items-start gap-3 text-white/90">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
+                <MapPin className="w-5 h-5 text-[#f97316]" />
+              </div>
+              <div className="text-left">
+                <p className="text-xs text-white/60 mb-1 uppercase tracking-wider">Office Address</p>
+                <p className="text-sm leading-snug">
+                  2nd Floor, Ogun State House,<br />
+                  Central Business District, Abuja, Nigeria
+                </p>
+              </div>
+            </div>
+
+            <div className="hidden sm:block w-px h-12 bg-white/20" />
+
+            <div className="flex items-start gap-3 text-white/90">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Phone className="w-5 h-5 text-[#f97316]" />
+              </div>
+              <div className="text-left">
+                <p className="text-xs text-white/60 mb-1 uppercase tracking-wider">Phone</p>
+                <p className="text-sm">08135420713</p>
+                <p className="text-sm">08165208228</p>
+              </div>
+            </div>
+
+            <div className="hidden sm:block w-px h-12 bg-white/20" />
+
+            <div className="flex items-start gap-3 text-white/90">
+              <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0 mt-0.5">
+                <Mail className="w-5 h-5 text-[#f97316]" />
+              </div>
+              <div className="text-left">
+                <p className="text-xs text-white/60 mb-1 uppercase tracking-wider">Email</p>
+                <a href="mailto:info@scottyeande.com" className="text-sm hover:text-[#f97316] transition-colors">
+                  info@scottyeande.com
+                </a>
+              </div>
+            </div>
+          </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild variant="accent" size="xl">
               <Link href="/book">
-                Book Your Event
+                Start a Project
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
             </Button>
             <Button asChild variant="outlineLight" size="xl">
-              <Link href="/contact">Contact Us</Link>
+              <Link href="/contact">Contact Our Team</Link>
             </Button>
           </div>
         </motion.div>

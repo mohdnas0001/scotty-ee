@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -96,10 +96,12 @@ export default function Navbar() {
               asChild
               variant="accent"
               size="sm"
-              className="ml-4 px-2 py-2"
+              className="ml-4 px-2 py-4"
             >
               <Link href="/book">
-                Book Event
+                  NBA-AGC 2026
+                 <ArrowRight className="w-5 h-5 ml-2" />
+
               </Link>
             </Button>
             </div>
@@ -177,7 +179,8 @@ export default function Navbar() {
                   className="w-full"
                 >
                   <Link href="/book">
-                    Book Event
+                    NBA-AGC 2026
+                                  <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
               </motion.div>
