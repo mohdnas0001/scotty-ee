@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Users,
@@ -14,7 +15,6 @@ import {
   Car,
   ChefHat,
   Shield,
-  Coffee,
   Sparkles,
   ChevronDown,
   ChevronUp,
@@ -256,7 +256,6 @@ const amenityIcons = [
   { icon: Car, label: "Parking" },
   { icon: ChefHat, label: "Kitchen" },
   { icon: Shield, label: "Security" },
-  { icon: Coffee, label: "Breakfast" },
   { icon: Bed, label: "Quality Beds" },
 ];
 
@@ -305,7 +304,7 @@ function RoomCard({ room, index }: { room: RoomOption; index: number }) {
               "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=500&fit=crop";
           }}
         />
-        <div className="absolute inset-0 bg-linear-to-t from-[#070d14] via-[#070d14]/30 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-[#1a2a3a] via-[#1a2a3a]/40 to-transparent" />
         <div className="absolute top-3 left-3">
           <TierBadge tier={room.tier} />
         </div>
@@ -375,10 +374,8 @@ function RoomCard({ room, index }: { room: RoomOption; index: number }) {
         </AnimatePresence>
 
         {/* CTA */}
-        <a
-          href="https://wa.me/2348135420713"
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          href={`/book/checkout?roomType=${room.id}&roomLabel=${encodeURIComponent(room.label)}&price=${room.price}&priceLabel=${encodeURIComponent(room.priceLabel)}`}
           className={`mt-auto flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm transition-all duration-200 hover:scale-[1.02] ${!room.available ? "opacity-40 pointer-events-none" : ""}`}
           style={
             room.tier === "luxury"
@@ -388,7 +385,7 @@ function RoomCard({ room, index }: { room: RoomOption; index: number }) {
         >
           Book Now
           <ArrowRight className="w-4 h-4" />
-        </a>
+        </Link>
       </div>
     </motion.div>
   );
@@ -404,7 +401,7 @@ export default function BookPage() {
       : apartmentCategories.filter((c) => c.id === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#070d14]">
+    <div className="min-h-screen bg-[#1a2a3a]">
 
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section className="relative pt-28 pb-20 overflow-hidden">
@@ -531,7 +528,7 @@ export default function BookPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="relative rounded-2xl overflow-hidden p-8 flex flex-col gap-5"
-            style={{ background: "linear-gradient(135deg, #0c1a2e 0%, #0a1628 100%)", border: "1px solid rgba(251,191,36,0.2)" }}
+            style={{ background: "linear-gradient(135deg, #1f3a4f 0%, #2d4a63 100%)", border: "1px solid rgba(251,191,36,0.2)" }}
           >
             <div className="absolute top-0 right-0 w-48 h-48 rounded-full bg-amber-500/5 blur-3xl pointer-events-none" />
             <div>
@@ -549,7 +546,6 @@ export default function BookPage() {
                 "High-speed WiFi connectivity",
                 "Netflix entertainment access",
                 "24/7 security",
-                "Complimentary breakfast",
                 "Airport transfer options available",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2 text-white/65 text-sm">
@@ -577,7 +573,7 @@ export default function BookPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="relative rounded-2xl overflow-hidden p-8 flex flex-col gap-5"
-            style={{ background: "linear-gradient(135deg, #0c1a2e 0%, #0a1628 100%)", border: "1px solid rgba(56,189,248,0.2)" }}
+            style={{ background: "linear-gradient(135deg, #1f3a4f 0%, #2d4a63 100%)", border: "1px solid rgba(56,189,248,0.2)" }}
           >
             <div className="absolute top-0 left-0 w-48 h-48 rounded-full bg-sky-500/5 blur-3xl pointer-events-none" />
             <div>
@@ -596,7 +592,6 @@ export default function BookPage() {
                 "High-speed WiFi connectivity",
                 "Netflix entertainment access",
                 "24/7 security",
-                "Complimentary breakfast",
                 "Ideal for law firms and associate groups",
               ].map((f) => (
                 <li key={f} className="flex items-start gap-2 text-white/65 text-sm">
@@ -823,7 +818,7 @@ export default function BookPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="relative rounded-2xl p-7 flex flex-col justify-between overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #0c1a2e 0%, #0a1628 100%)", border: "1px solid rgba(245,158,11,0.2)" }}
+            style={{ background: "linear-gradient(135deg, #1f3a4f 0%, #2d4a63 100%)", border: "1px solid rgba(245,158,11,0.2)" }}
           >
             <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-amber-500/8 blur-3xl pointer-events-none" />
             <div className="relative">

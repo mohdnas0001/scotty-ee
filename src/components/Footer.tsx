@@ -15,16 +15,16 @@ import {
 
 const footerLinks = {
   company: [
-    { label: "About Us", href: "/about" },
-    { label: "Our Services", href: "/services" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Contact", href: "/contact" },
+    { label: "Home", href: "/#home" },
+    { label: "Why Book Early", href: "/#why-book" },
+    { label: "Services", href: "/#services" },
+    { label: "Contact", href: "/#contact" },
   ],
   services: [
-    { label: "Event Management", href: "/services" },
-    { label: "Corporate Errands", href: "/services" },
-    { label: "Contracting Services", href: "/services" },
-    { label: "Travel & Bookings", href: "/services" },
+    { label: "Hotel Reservation Support", href: "/#services" },
+    { label: "Payment & Confirmation", href: "/#services" },
+    { label: "Logistics Guidance", href: "/#services" },
+    { label: "Post-Booking Support", href: "/#services" },
   ],
   social: [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -58,8 +58,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Providing dependable event planning, corporate errands, and contracting
-              services across Nigeria and Africa.
+              Accommodation booking support for 2026 NBA-AGC participants in Port Harcourt.
             </p>
             {/* Social Links */}
             <div className="flex gap-4">
@@ -132,37 +131,35 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#f97316] mt-1 shrink-0" />
                 <span className="text-gray-400">
-                  2nd Floor, Ogun State House,
+                  Port Harcourt, Rivers State,
                   <br />
-                  Central Business District,
-                  <br />
-                  Abuja, Nigeria
+                  Nigeria
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-[#f97316] mt-0.5 shrink-0" />
                 <div className="flex flex-col gap-1">
                   <a
-                    href="tel:08135420713"
+                    href="tel:08069206814"
                     className="text-gray-400 hover:text-[#f97316] transition-colors"
                   >
-                    08135420713
+                    Tony: 08069206814
                   </a>
                   <a
-                    href="tel:08165208228"
+                    href="tel:07031477237"
                     className="text-gray-400 hover:text-[#f97316] transition-colors"
                   >
-                    08165208228
+                    John/Cynthia: 07031477237
                   </a>
                 </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#f97316] shrink-0" />
                 <a
-                  href="mailto:info@scottyeande.com"
+                  href="mailto:nacobooking@gmail.com"
                   className="text-gray-400 hover:text-[#f97316] transition-colors"
                 >
-                  info@scottyeande.com
+                  nacobooking@gmail.com
                 </a>
               </li>
             </ul>

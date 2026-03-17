@@ -1,137 +1,99 @@
-/* eslint-disable react-hooks/purity */
 "use client";
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-linear-to-br from-[#1e3a5f] via-[#2d4a6f] to-[#0f172a] animate-gradient" />
-      
-      {/* Animated Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-[#f97316]/30 rounded-full"
-            initial={{
-              x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 800),
-            }}
-            animate={{
-              y: [null, -20, 20],
-              opacity: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 3 + Math.random() * 2,
-              repeat: Infinity,
-              repeatType: "reverse",
-              delay: Math.random() * 2,
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* Overlay Pattern */}
-      <div 
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
+    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 bg-linear-to-b from-[#1a3a52] via-[#2d4a6f] to-[#1f3a4f]" />
+      <div className="absolute -left-32 top-20 h-72 w-72 rounded-full bg-[#f97316]/20 blur-3xl" />
+      <div className="absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-white/12 blur-3xl" />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="mb-6"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm font-medium">
-            <Sparkles className="w-4 h-4 text-[#f97316]" />
-            Scotty E&amp;E Corporate Services
-          </span>
-        </motion.div>
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="rounded-4xl border border-white/15 bg-white/8 p-4 sm:p-6 lg:p-8 backdrop-blur-xl shadow-2xl">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8 items-center">
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="mb-6"
+              >
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-white/12 rounded-full text-white/90 text-sm font-medium border border-white/10">
+                  66th NBA Annual General Conference • August 2026 • Port Harcourt
+                </span>
+              </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
-          style={{ fontFamily: "Poppins, sans-serif" }}
-        >
-          We Don&apos;t Just Handle Tasks.{" "}
-          <br/>
-          <span className="text-[#f97316]">We Make Business</span> <br/> Run Smoothly.
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 , y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-          className="text-lg sm:text-xl text-white/80 max-w-3xl mx-auto mb-4"
-        >
-          From high-impact events to corporate errands and operational support, Scotty E&amp;E
-          helps businesses stay organised, efficient, and focused on what truly matters.
-        </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-5 leading-tight"
+              >
+                Secure Your
+                <span className="text-[#f97316]"> Accommodation</span>
+                <br />
+                Before Hotel Rates Rise.
+              </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-          className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto mb-10"
-        >
-          Across Nigeria and Africa, we deliver reliable planning, coordination, and contracting
-          services designed to simplify operations and deliver results.
-        </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                className="text-lg sm:text-xl text-white/85 max-w-2xl mb-8"
+              >
+                Accommodation reservations are now live for conference participants.
+                Book early with Scotty E&amp;E Logistics Ltd for the best locations and rates.
+              </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Button asChild variant="accent" size="lg">
-            <Link href="/book">
-              NBA-AGC 2026
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
-          </Button>
-          <Button asChild variant="outlineLight" size="lg">
-            <Link href="/contact">
-              Speak to Our Team
-            </Link>
-          </Button>
-        </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <Button asChild variant="accent" size="lg">
+                  <Link href="/book">
+                    Book Accommodation
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+                <Button asChild variant="outlineLight" size="lg">
+                  <Link href="#contact">
+                    View Contact Desk
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              className="relative"
+            >
+              <div className="rounded-3xl border border-white/15 bg-black/20 p-3 backdrop-blur-md shadow-xl">
+                <div className="overflow-hidden rounded-2xl bg-black aspect-4/5 sm:aspect-16/10 lg:aspect-4/5">
+                  <video
+                    className="w-full h-full object-cover object-center"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                  >
+                    <source src="https://h2ldvyryqnz4w6ws.public.blob.vercel-storage.com/SCOTTY%20E%26E%20VIDEO%204.mp4" type="video/mp4" />
+                  </video>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.8 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2"
-        >
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="w-1.5 h-1.5 bg-white rounded-full"
-          />
-        </motion.div>
-      </motion.div>
     </section>
   );
 }

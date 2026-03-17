@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -26,7 +26,10 @@ import {
   Projector,
   ChevronLeft,
   ChevronRight,
+  AlertCircle,
+  Loader2,
 } from "lucide-react";
+import PaystackButton from "@/components/PaystackButton";
 
 /* ─── DATA ──────────────────────────────────────────────────────────────────── */
 
@@ -340,10 +343,69 @@ function BookingSidebar({ pkg }: { pkg: Package }) {
     sessions: "1",
     special: "",
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [step, setStep] = useState<"form" | "pay" | "verifying" | "success" | "error">("form");
+  const [orderRef, setOrderRef] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const tier = pkg.tiers.find((t) => t.id === form.tierId);
   const total = (tier?.price ?? 0) * Number(form.sessions);
+
+  // Unique deterministic reference per form submission
+  const payRef = orderRef || `scotty_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const ref = `scotty_${Date.now()}_${Math.random().toString(36).slice(2, 7)}`;
+    setOrderRef(ref);
+    // Pre-create the order in pending state
+    await fetch("/api/orders", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        reference: ref,
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        packageId: pkg.name.toLowerCase().replace(/\s+/g, "-"),
+        packageName: pkg.name,
+        tierId: form.tierId,
+        tierName: tier?.name ?? form.tierId,
+        eventDate: form.checkin,
+        endDate: form.checkout,
+        adults: form.adults,
+        children: form.children,
+        sessions: form.sessions,
+        specialRequests: form.special,
+        amount: total,
+      }),
+    });
+    setStep("pay");
+  };
+
+  const handlePaymentSuccess = useCallback(async (reference: string) => {
+    setStep("verifying");
+    try {
+      const res = await fetch("/api/payments/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ reference }),
+      });
+      const data = await res.json();
+      if (data.verified) {
+        setStep("success");
+      } else {
+        setErrorMsg(data.message ?? "Payment could not be verified.");
+        setStep("error");
+      }
+    } catch {
+      setErrorMsg("Network error while verifying payment. Please contact support.");
+      setStep("error");
+    }
+  }, []);
+
+  const handlePaymentClose = useCallback(() => {
+    if (step === "pay") setStep("form");
+  }, [step]);
 
   const field = (label: string, key: keyof typeof form, type = "text", placeholder = "") => (
     <div>
@@ -374,7 +436,8 @@ function BookingSidebar({ pkg }: { pkg: Package }) {
     </div>
   );
 
-  if (submitted) return (
+  // ── SUCCESS ──
+  if (step === "success") return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -385,18 +448,107 @@ function BookingSidebar({ pkg }: { pkg: Package }) {
         style={{ background: "rgba(34,197,94,0.15)", border: "1px solid rgba(34,197,94,0.3)" }}>
         <CheckCircle className="w-7 h-7 text-emerald-400" />
       </div>
-      <h3 className="text-white font-black text-lg mb-2">Request Sent!</h3>
-      <p className="text-white/40 text-sm mb-5">We&apos;ll contact you within 24 hours to confirm your booking.</p>
-      <button onClick={() => setSubmitted(false)}
+      <h3 className="text-white font-black text-lg mb-2">Booking Confirmed!</h3>
+      <p className="text-white/40 text-sm mb-2">Payment of <span className="text-emerald-400 font-bold">₦{total.toLocaleString()}</span> was successful.</p>
+      <p className="text-white/30 text-xs mb-5">Ref: {orderRef}</p>
+      <p className="text-white/40 text-sm mb-5">We&apos;ll send a confirmation to <span className="text-sky-400">{form.email}</span> shortly.</p>
+      <button
+        onClick={() => { setStep("form"); setOrderRef(""); setForm({ name: "", email: "", phone: "", checkin: "", checkout: "", adults: "1", children: "0", tierId: pkg.tiers[0]?.id ?? "", sessions: "1", special: "" }); }}
         className="text-sky-400 text-sm hover:text-sky-300 transition-colors cursor-pointer">
-        Make another enquiry
+        Make another booking
       </button>
     </motion.div>
   );
 
+  // ── ERROR ──
+  if (step === "error") return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="rounded-2xl p-8 text-center"
+      style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+    >
+      <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4"
+        style={{ background: "rgba(239,68,68,0.15)", border: "1px solid rgba(239,68,68,0.3)" }}>
+        <AlertCircle className="w-7 h-7 text-red-400" />
+      </div>
+      <h3 className="text-white font-black text-lg mb-2">Payment Issue</h3>
+      <p className="text-white/40 text-sm mb-5">{errorMsg}</p>
+      <button onClick={() => setStep("pay")} className="text-sky-400 text-sm hover:text-sky-300 transition-colors cursor-pointer mr-4">Try Again</button>
+      <button onClick={() => setStep("form")} className="text-white/30 text-sm hover:text-white/60 transition-colors cursor-pointer">Edit Details</button>
+    </motion.div>
+  );
+
+  // ── VERIFYING ──
+  if (step === "verifying") return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="rounded-2xl p-8 text-center"
+      style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+    >
+      <Loader2 className="w-10 h-10 text-sky-400 animate-spin mx-auto mb-4" />
+      <h3 className="text-white font-black text-lg mb-2">Verifying Payment…</h3>
+      <p className="text-white/40 text-sm">Please wait while we confirm your transaction.</p>
+    </motion.div>
+  );
+
+  // ── PAY STEP ──
+  if (step === "pay") return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="rounded-2xl p-5 space-y-5"
+      style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+    >
+      <h3 className="text-white font-black text-base">Complete Payment</h3>
+
+      {/* Order summary */}
+      <div className="rounded-xl p-4 space-y-2" style={{ background: "rgba(14,165,233,0.06)", border: "1px solid rgba(56,189,248,0.12)" }}>
+        <div className="flex justify-between text-sm text-white/50">
+          <span>{pkg.name}</span>
+          <span>{tier?.name}</span>
+        </div>
+        <div className="flex justify-between text-sm text-white/50">
+          <span>Guests</span>
+          <span>{form.adults} adults, {form.children} children</span>
+        </div>
+        <div className="flex justify-between text-sm text-white/50">
+          <span>Event Date</span>
+          <span>{form.checkin}</span>
+        </div>
+        <div className="flex justify-between font-black text-white pt-2 border-t border-white/10 text-base">
+          <span>Total</span>
+          <span>₦{total.toLocaleString()}</span>
+        </div>
+      </div>
+
+      <PaystackButton
+        email={form.email}
+        amount={total}
+        name={form.name}
+        phone={form.phone}
+        reference={orderRef || payRef}
+        metadata={{ packageName: pkg.name, tierId: form.tierId, eventDate: form.checkin }}
+        onSuccess={handlePaymentSuccess}
+        onClose={handlePaymentClose}
+        label={`Pay ₦${total.toLocaleString()}`}
+      />
+
+      <button
+        type="button"
+        onClick={() => setStep("form")}
+        className="w-full text-center text-white/30 text-xs hover:text-white/60 transition-colors cursor-pointer py-1"
+      >
+        ← Edit booking details
+      </button>
+    </motion.div>
+  );
+
+  // ── FORM STEP ──
   return (
     <form
-      onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}
+      onSubmit={handleFormSubmit}
       className="rounded-2xl p-5 space-y-4"
       style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
     >
@@ -463,7 +615,7 @@ function BookingSidebar({ pkg }: { pkg: Package }) {
         style={{ background: "linear-gradient(135deg,#0ea5e9,#6366f1)", boxShadow: "0 8px 24px rgba(14,165,233,0.25)" }}
       >
         <CalendarCheck className="w-4 h-4" />
-        Check Availability
+        Continue to Payment
       </button>
     </form>
   );

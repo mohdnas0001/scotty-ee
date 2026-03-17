@@ -9,11 +9,11 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#home", label: "Home" },
+  { href: "/#why-book", label: "Why Book Early" },
+  { href: "/#services", label: "Services" },
+  { href: "/#how-to-book", label: "How To Book" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Navbar() {
@@ -180,7 +180,7 @@ export default function Navbar() {
                 >
                   <Link href="/book">
                     NBA-AGC 2026
-                                  <ArrowRight className="w-5 h-5 ml-2" />
+                    <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
               </motion.div>

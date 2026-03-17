@@ -1,100 +1,129 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import ServiceCard from "@/components/ServiceCard";
 import {
-  CalendarCheck,
-  Briefcase,
-  Wrench,
-  Plane,
+  ChevronDown,
+  ChevronUp,
+  Building2,
+  ShieldCheck,
+  CreditCard,
+  Settings,
 } from "lucide-react";
 
 const services = [
   {
-    icon: CalendarCheck,
-    title: "Event Management",
+    icon: Building2,
+    title: "Hotel Reservation Support",
     description:
-      "We design and manage events that are organised, engaging, and professionally executed. From corporate functions and conferences to weddings and private celebrations, Scotty E&E handles every detail so you can focus on the experience.",
+      "We help conference delegates secure the right accommodation quickly and confidently.",
     deliverables: [
-      "End-to-End Event Planning — concept development, logistics coordination, vendor management, and execution.",
-      "Venue & Vendor Coordination — we secure venues, manage suppliers, and ensure every moving part works together.",
-      "On-Site Event Management — our team oversees real-time coordination to guarantee smooth delivery.",
-      "Budget & Timeline Management — careful planning ensures your event stays on schedule and within budget.",
-      "Product Launch Events — strategic launch experiences designed to generate attention and engagement.",
-      "Catering & Guest Experience — curated catering services and hospitality management.",
+      "Access approved accommodation options for NBA-AGC participants.",
+      "Compare options by location, comfort level, and budget.",
+      "Get fast support for room availability and booking decisions.",
     ],
   },
   {
-    icon: Briefcase,
-    title: "Corporate Errands",
+    icon: CreditCard,
+    title: "Payment & Confirmation",
     description:
-      "Busy teams should focus on strategic work, not logistics. Scotty E&E provides dependable corporate errand services that handle urgent tasks and operational requests quickly and professionally.",
+      "Make secure payments and receive timely booking confirmation.",
     deliverables: [
-      "Business Task Execution — document delivery, item pickups, administrative support, and urgent errands.",
-      "Same-Day Service — fast and reliable service across the business day.",
-      "Flexible Corporate Support — one-time assignments or recurring operational assistance.",
+      "Online checkout experience for easier reservation flow.",
+      "Payment verification and clear booking status updates.",
+      "Dedicated assistance for payment-related questions.",
     ],
   },
   {
-    icon: Wrench,
-    title: "Contracting Services",
+    icon: ShieldCheck,
+    title: "Conference Logistics Guidance",
     description:
-      "We help organisations maintain and manage projects through dependable contracting, coordination and operational oversight.",
+      "Receive practical guidance for a smooth conference stay.",
     deliverables: [
-      "Facility & Property Maintenance — routine upkeep, inspections, and repairs coordinated with trusted partners.",
-      "Project Coordination & Oversight — planning, scheduling, and monitoring work to ensure quality delivery.",
-      "Verified Contractor Network — we work with reliable professionals to ensure safe and efficient service.",
+      "Recommendations based on proximity and convenience.",
+      "Support for group bookings and shared accommodation plans.",
+      "Reliable communication from inquiry to check-in readiness.",
     ],
   },
   {
-    icon: Plane,
-    title: "Travel & Bookings",
+    icon: Settings,
+    title: "Post-Booking Support",
     description:
-      "Planning business or personal travel should be simple. Scotty E&E helps you manage travel arrangements with convenience and efficiency.",
+      "Manage updates and preferences after booking.",
     deliverables: [
-      "Flight & Travel Bookings — competitive travel options tailored to your needs.",
-      "Trip Coordination — accommodation, logistics, and scheduling in one place.",
-      "Personalised Travel Services — everything needed to make your journey smooth and convenient.",
+      "Assistance for booking changes where applicable.",
+      "Quick access to reservation details and communication channels.",
+      "Continued support before conference arrival.",
     ],
   },
 ];
 
 export default function Services() {
+  const [openIndex, setOpenIndex] = useState<number>(0);
+
   return (
-    <section className="w-full py-24 bg-linear-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+    <section id="services" className="w-full py-20 bg-white">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.5 }}
+          className="text-center mb-10"
         >
           <span className="text-[#f97316] font-semibold text-sm uppercase tracking-wider">
             Services
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1e3a5f] mt-3 mb-5">
-            Reliable Support for Your{" "}
-            <span className="text-[#f97316]">Business Operations</span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#1e3a5f] mt-3 mb-4">
+            What We Offer for
+            <span className="text-[#f97316]"> NBA-AGC 2026</span>
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            We provide practical services that help businesses plan better, move faster,
-            and execute with confidence.
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            Click each service to view details.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-3">
           {services.map((service, index) => (
-            <ServiceCard
+            <motion.div
               key={service.title}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              deliverables={service.deliverables}
-              index={index}
-            />
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: index * 0.07 }}
+              className="rounded-xl border border-gray-200 bg-white"
+            >
+              <button
+                type="button"
+                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
+                className="w-full flex items-center justify-between gap-4 p-5 text-left"
+              >
+                <div className="flex items-center gap-3">
+                  <service.icon className="h-5 w-5 text-[#1e3a5f]" />
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#1e3a5f]">{service.title}</h3>
+                    <p className="text-sm text-gray-600 mt-1">{service.description}</p>
+                  </div>
+                </div>
+                {openIndex === index ? (
+                  <ChevronUp className="h-5 w-5 text-[#1e3a5f] shrink-0" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-[#1e3a5f] shrink-0" />
+                )}
+              </button>
+
+              {openIndex === index && (
+                <div className="px-5 pb-5">
+                  <ul className="space-y-2 pt-1 border-t border-gray-100">
+                    {service.deliverables.map((item) => (
+                      <li key={item} className="text-sm text-gray-700 leading-relaxed">
+                        • {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </motion.div>
           ))}
         </div>
       </div>
