@@ -4,16 +4,15 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
   { href: "/#home", label: "Home" },
-  { href: "/#why-book", label: "Why Book Early" },
-  { href: "/#services", label: "Services" },
-  { href: "/#how-to-book", label: "How To Book" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export default function Navbar() {
@@ -38,7 +37,7 @@ export default function Navbar() {
           "fixed w-full top-0 left-0 right-0 z-50 transition-all duration-500",
           isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-lg py-3"
-            : "bg-transparent py-6"
+            : "bg-white/80 backdrop-blur-sm border-b border-gray-100 py-4"
         )}
       >
         <div className="w-full flex items-center justify-between  px-4 sm:px-6 lg:px-8">
@@ -51,7 +50,7 @@ export default function Navbar() {
               >
                 {/* Desktop: Line logo */}
                 <Image
-                  src={isScrolled ? "/icon/logo-line-colored-alt.svg" : "/icon/logo-full-white-2.svg"}
+                  src="/icon/logo-line-colored-alt.svg"
                   alt="Scotty E&E"
                   width={200}
                   height={40}
@@ -60,7 +59,7 @@ export default function Navbar() {
                 />
                 {/* Mobile: Smaller line logo */}
                 <Image
-                  src={isScrolled ? "/icon/logo-line-colored.svg" : "/icon/logo-line-white.svg"}
+                  src="/icon/logo-line-colored.svg"
                   alt="Scotty E&E"
                   width={160}
                   height={32}
@@ -76,10 +75,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={cn(
-                    "relative text-sm font-medium transition-colors duration-300 hover:text-[#f97316]",
-                    isScrolled ? "text-[#1e3a5f]" : "text-white"
-                  )}
+                  className="relative text-sm font-medium transition-colors duration-300 hover:text-[#f97316] text-[#1e3a5f]"
                 >
                   <motion.span
                     whileHover={{ y: -2 }}
@@ -96,24 +92,17 @@ export default function Navbar() {
               asChild
               variant="accent"
               size="sm"
-              className="ml-4 px-2 py-4"
+              className="ml-4 px-5 py-4 rounded-full"
             >
               <Link href="/book">
-                  NBA-AGC 2026
-                 <ArrowRight className="w-5 h-5 ml-2" />
-
+                  Book Appointment
               </Link>
             </Button>
             </div>
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={cn(
-                "lg:hidden p-2 rounded-lg transition-colors",
-                isScrolled
-                  ? "text-[#1e3a5f] hover:bg-gray-100"
-                  : "text-white hover:bg-white/10"
-              )}
+              className="lg:hidden p-2 rounded-lg transition-colors text-[#1e3a5f] hover:bg-gray-100"
             >
               {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -176,11 +165,10 @@ export default function Navbar() {
                   asChild
                   variant="accent"
                   size="lg"
-                  className="w-full"
+                  className="w-full rounded-full"
                 >
                   <Link href="/book">
-                    NBA-AGC 2026
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    Book Appointment
                   </Link>
                 </Button>
               </motion.div>

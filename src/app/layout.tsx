@@ -4,11 +4,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Scotty E & E | 2026 NBA-AGC Accommodation",
+  title: "Scotty E&E Corporate Service | Events. Errands. Contracting.",
   description:
-    "Book conference accommodation early for 2026 NBA-AGC in Port Harcourt. Secure better rates, preferred locations, and guided support.",
+    "Scotty E&E delivers event planning, corporate errands & contracting services across Nigeria — fast, reliable, professional.",
   keywords:
-    "NBA-AGC 2026 accommodation, Port Harcourt hotel booking, conference accommodation, Scotty E&E logistics",
+    "event management Nigeria, corporate errands, contracting services, Scotty E&E, event planning, logistics",
 };
 
 export default function RootLayout({

@@ -1,131 +1,148 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  ChevronDown,
-  ChevronUp,
-  Building2,
-  ShieldCheck,
-  CreditCard,
-  Settings,
-} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Star, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
-const services = [
+const tabs = [
   {
-    icon: Building2,
-    title: "Hotel Reservation Support",
-    description:
-      "We help conference delegates secure the right accommodation quickly and confidently.",
-    deliverables: [
-      "Access approved accommodation options for NBA-AGC participants.",
-      "Compare options by location, comfort level, and budget.",
-      "Get fast support for room availability and booking decisions.",
+    id: "events",
+    label: "Event Management",
+    icon: "🎯",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=500&fit=crop",
+    title: "Event Management",
+    items: [
+      "Full event planning & on-site coordination",
+      "Venue selection & vendor management",
+      "Guest list handling & RSVP support",
+      "Decoration, lighting & sound setup",
+      "Day-of execution with live team communication",
+      "Budget planning & event timeline management",
     ],
   },
   {
-    icon: CreditCard,
-    title: "Payment & Confirmation",
-    description:
-      "Make secure payments and receive timely booking confirmation.",
-    deliverables: [
-      "Online checkout experience for easier reservation flow.",
-      "Payment verification and clear booking status updates.",
-      "Dedicated assistance for payment-related questions.",
+    id: "errands",
+    label: "Corporate Errands",
+    icon: "🛒",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=500&fit=crop",
+    title: "Corporate Errands",
+    items: [
+      "Secure document delivery & pickup",
+      "Personal shopping for executives (VIP service)",
+      "Office supply runs & courier support",
+      "Time-sensitive task management",
+      "Discreet, professional handling of errands",
+      "Hotel bookings & flight ticket coordination",
     ],
   },
   {
-    icon: ShieldCheck,
-    title: "Conference Logistics Guidance",
-    description:
-      "Receive practical guidance for a smooth conference stay.",
-    deliverables: [
-      "Recommendations based on proximity and convenience.",
-      "Support for group bookings and shared accommodation plans.",
-      "Reliable communication from inquiry to check-in readiness.",
-    ],
-  },
-  {
-    icon: Settings,
-    title: "Post-Booking Support",
-    description:
-      "Manage updates and preferences after booking.",
-    deliverables: [
-      "Assistance for booking changes where applicable.",
-      "Quick access to reservation details and communication channels.",
-      "Continued support before conference arrival.",
+    id: "contracting",
+    label: "Contracting",
+    icon: "✉️",
+    image: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=500&fit=crop",
+    title: "Contracting",
+    items: [
+      "Hotel bookings & flight ticket coordination",
+      "Procurement of materials & equipment",
+      "Repair coordination & site logistics",
+      "Cleaning & technical servicing",
+      "Ongoing operational support for businesses",
+      "Emergency response & troubleshooting support",
     ],
   },
 ];
 
 export default function Services() {
-  const [openIndex, setOpenIndex] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState(0);
+  const current = tabs[activeTab];
 
   return (
-    <section id="services" className="w-full py-20 bg-white">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="w-full py-24 bg-white">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center mb-12"
         >
-          <span className="text-[#f97316] font-semibold text-sm uppercase tracking-wider">
-            Services
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-gray-600 text-sm font-medium border border-gray-200 mb-5">
+            ⚙️ Services
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#1e3a5f] mt-3 mb-4">
-            What We Offer for
-            <span className="text-[#f97316]"> NBA-AGC 2026</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1e3a5f] mt-2 mb-4">
+            <span className="text-[#f97316] italic">Custom Solutions</span>
+            <br />
+            for Every Need
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Click each service to view details.
+          <p className="text-gray-500 max-w-xl mx-auto">
+            From event management to corporate errands and contracting — we offer reliable,
+            end-to-end solutions designed to make your operations smoother.
           </p>
         </motion.div>
 
-        <div className="space-y-3">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.07 }}
-              className="rounded-xl border border-gray-200 bg-white"
+        {/* Tabs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10">
+          {tabs.map((tab, i) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setActiveTab(i)}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl border text-sm font-medium transition-all duration-200 ${
+                activeTab === i
+                  ? "bg-white border-gray-300 shadow-md text-[#1e3a5f]"
+                  : "bg-transparent border-gray-200 text-gray-500 hover:border-gray-300 hover:text-[#1e3a5f]"
+              }`}
             >
-              <button
-                type="button"
-                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                className="w-full flex items-center justify-between gap-4 p-5 text-left"
-              >
-                <div className="flex items-center gap-3">
-                  <service.icon className="h-5 w-5 text-[#1e3a5f]" />
-                  <div>
-                    <h3 className="text-lg font-semibold text-[#1e3a5f]">{service.title}</h3>
-                    <p className="text-sm text-gray-600 mt-1">{service.description}</p>
-                  </div>
-                </div>
-                {openIndex === index ? (
-                  <ChevronUp className="h-5 w-5 text-[#1e3a5f] shrink-0" />
-                ) : (
-                  <ChevronDown className="h-5 w-5 text-[#1e3a5f] shrink-0" />
-                )}
-              </button>
-
-              {openIndex === index && (
-                <div className="px-5 pb-5">
-                  <ul className="space-y-2 pt-1 border-t border-gray-100">
-                    {service.deliverables.map((item) => (
-                      <li key={item} className="text-sm text-gray-700 leading-relaxed">
-                        • {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </motion.div>
+              <span>{tab.icon}</span>
+              {tab.label}
+            </button>
           ))}
         </div>
+
+        {/* Content panel */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={current.id}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.35 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            {/* Image */}
+            <div className="rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 aspect-6/5 relative">
+              <Image
+                src={current.image}
+                alt={current.title}
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Details */}
+            <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-8 flex flex-col justify-center">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#1e3a5f] mb-6">{current.title}</h3>
+              <ul className="space-y-4 mb-8">
+                {current.items.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-gray-600">
+                    <Star className="w-4 h-4 text-[#f97316] mt-1 shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1e3a5f] text-white text-sm font-medium rounded-lg hover:bg-[#162d4a] transition-colors w-fit"
+              >
+                <ArrowRight className="w-4 h-4" />
+                Contact us
+              </Link>
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
