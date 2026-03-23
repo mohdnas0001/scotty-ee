@@ -120,7 +120,7 @@ export default function ContactPage() {
                 </a>
               </div>
 
-              <div className="mb-10">
+              <div className="mb-8">
                 <h3 className="text-lg font-semibold text-[#1e3a5f] mb-2">
                   Whatsapp
                 </h3>
@@ -132,6 +132,21 @@ export default function ContactPage() {
                 >
                   +234 806 920 6814
                 </a>
+              </div>
+
+              <div className="mb-8">
+                <h3 className="text-lg font-semibold text-[#1e3a5f] mb-2">
+                  Phone
+                </h3>
+                <p className="text-gray-500">Esther — <a href="tel:+2348135420713" className="hover:text-[#f97316] transition-colors">08135420713</a></p>
+                <p className="text-gray-500">Mr Tuale — <a href="tel:+2348069218943" className="hover:text-[#f97316] transition-colors">+234 806 921 8943</a></p>
+              </div>
+
+              <div className="mb-10">
+                <h3 className="text-lg font-semibold text-[#1e3a5f] mb-2">
+                  Address
+                </h3>
+                <p className="text-gray-500">2nd Floor, Ogun State House, CBD Abuja</p>
               </div>
 
               <div>
@@ -279,7 +294,8 @@ export default function ContactPage() {
           className="absolute top-8 left-4 sm:left-8 lg:left-16 bg-white rounded-2xl shadow-xl p-8 sm:p-10 max-w-md z-10"
         >
           <h3 className="text-xl font-bold text-[#1e3a5f] mb-1">Location</h3>
-          <p className="text-gray-500 mb-6">We operate throughout Nigeria</p>
+          <p className="text-gray-500 mb-2">2nd Floor, Ogun State House, CBD Abuja</p>
+          <p className="text-gray-500 text-sm mb-6">We operate throughout Nigeria</p>
 
           <div className="mb-8">
             <h4 className="text-sm font-semibold text-[#1e3a5f] mb-3">

@@ -50,8 +50,8 @@ export default function FAQSection() {
           >
             <div className="rounded-2xl overflow-hidden aspect-4/5 relative bg-gray-100">
               <Image
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop"
-                alt="Support team member"
+                src="https://images.unsplash.com/photo-1652077859695-de2851a95620?w=600&h=750&fit=crop"
+                alt="Frequently asked questions"
                 fill
                 className="object-cover"
               />

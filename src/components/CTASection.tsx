@@ -20,10 +20,17 @@ const contactCards = [
   },
   {
     icon: Phone,
-    title: "Call us",
-    description: "Monday to Friday 8am - 5pm",
-    action: "Free Call",
-    href: "tel:+2348069206814",
+    title: "Call Esther",
+    description: "08135420713",
+    action: "Call Now",
+    href: "tel:+2348135420713",
+  },
+  {
+    icon: Phone,
+    title: "Call Mr Tuale",
+    description: "+234 806 921 8943",
+    action: "Call Now",
+    href: "tel:+2348069218943",
   },
 ];
 
@@ -45,8 +52,11 @@ export default function CTASection() {
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1e3a5f] mb-3 leading-tight">
               How to <span className="text-[#f97316] italic">get in<br />touch</span> with us
             </h2>
-            <p className="text-gray-500 mb-8">
+            <p className="text-gray-500 mb-4">
               Have a question? We&apos;re always here to help.
+            </p>
+            <p className="text-sm text-gray-500 mb-8">
+              📍 2nd Floor, Ogun State House, CBD Abuja
             </p>
 
             {/* Map embed */}

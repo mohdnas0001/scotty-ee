@@ -8,7 +8,7 @@ const testimonials = [
     id: 1,
     name: "Michael O.",
     role: "HR Manager",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1627927279485-d34e716ddab3?w=80&h=80&fit=crop",
     content:
       "Scotty E&E took care of our product launch from start to finish. The event was flawless, and their team handled every detail with professionalism.",
   },
@@ -16,7 +16,7 @@ const testimonials = [
     id: 2,
     name: "Marc D.",
     role: "Director",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=80&h=80&fit=crop",
     content:
       "We needed reliable document delivery on short notice, and Scotty E&E delivered — literally. Fast, secure, and professional.",
   },
@@ -24,7 +24,7 @@ const testimonials = [
     id: 3,
     name: "Christina A.",
     role: "Executive Assistant",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1655634338062-fb8c2297a05e?w=80&h=80&fit=crop",
     content:
       "From planning to execution, their event team was outstanding. It felt like they were part of our company!",
   },
@@ -32,7 +32,7 @@ const testimonials = [
     id: 4,
     name: "Chris J.",
     role: "CEO",
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1621972660772-6a0427d5e102?w=80&h=80&fit=crop",
     content:
       "They supported us with facility maintenance and procurement during our office renovation — seamless and stress-free.",
   },
@@ -40,7 +40,7 @@ const testimonials = [
     id: 5,
     name: "Daniel T.",
     role: "HR Manager",
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1627927279485-d34e716ddab3?w=80&h=80&fit=crop",
     content:
       "We've worked with many contractors before, but none as responsive and structured as Scotty E&E. Highly recommended.",
   },
@@ -48,7 +48,7 @@ const testimonials = [
     id: 6,
     name: "Ethan W.",
     role: "Founder",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop",
+    image: "https://images.unsplash.com/photo-1655634338062-fb8c2297a05e?w=80&h=80&fit=crop",
     content:
       "Scotty E&E's errand services save us hours every week. It's like having a trusted extra set of hands in the background.",
   },

@@ -6,10 +6,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const avatars = [
-  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&h=60&fit=crop",
-  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop",
-  "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop",
-  "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&h=60&fit=crop",
+  "https://images.unsplash.com/photo-1627927279485-d34e716ddab3?w=60&h=60&fit=crop",
+  "https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?w=60&h=60&fit=crop",
+  "https://images.unsplash.com/photo-1655634338062-fb8c2297a05e?w=60&h=60&fit=crop",
+  "https://images.unsplash.com/photo-1621972660772-6a0427d5e102?w=60&h=60&fit=crop",
 ];
 
 export default function Hero() {

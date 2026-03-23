@@ -96,7 +96,7 @@ export default function AboutPage() {
             >
               <div className="relative w-80 sm:w-100 md:w-110 aspect-3/4 rounded-2xl overflow-hidden shadow-2xl bg-[#1e3a5f]">
                 <Image
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop&crop=face"
+                  src="https://images.unsplash.com/photo-1621972660772-6a0427d5e102?w=600&h=800&fit=crop&crop=face"
                   alt="Scotty - Founder"
                   fill
                   className="object-cover"

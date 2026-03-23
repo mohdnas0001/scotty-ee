@@ -83,10 +83,10 @@ export default function Footer() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="flex flex-col sm:flex-row items-center justify-between py-6 gap-4"
         >
-          <p className="text-xs text-gray-400 tracking-wide">
-            © {new Date().getFullYear()} Scotty E&E Corporate Service. All
-            rights reserved.
-          </p>
+          <div className="text-xs text-gray-400 tracking-wide">
+            <p>© {new Date().getFullYear()} Scotty E&E Corporate Service. All rights reserved.</p>
+            <p className="mt-1">📍 2nd Floor, Ogun State House, CBD Abuja &nbsp;|&nbsp; Esther: 08135420713 &nbsp;|&nbsp; Mr Tuale: +234 806 921 8943</p>
+          </div>
           <div className="flex items-center gap-6 text-xs">
             <a
               href="#"

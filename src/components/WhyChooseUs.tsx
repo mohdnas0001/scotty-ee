@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const stats = [
   { value: "4+", label: "Years experience" },
-  { value: "100+", label: "Successful events & errands completed" },
-  { value: "100%", label: "Client satisfaction rate" },
+  { value: "75+", label: "Successful events & errands completed" },
+  { value: "80%", label: "Client satisfaction rate" },
   { value: "12+", label: "Ongoing corporate clients supported monthly" },
 ];
 
